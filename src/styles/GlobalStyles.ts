@@ -5,6 +5,7 @@ export default createGlobalStyle`
   margin: 0;
   padding: 0;
   outline: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -28,5 +29,6 @@ button{
   --white: #ffffff;
   --border-gray: #ebebeb;
   --black: #212121;
+  --red: #ff0150;
 }
 `;
