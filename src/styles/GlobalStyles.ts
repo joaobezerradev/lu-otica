@@ -25,7 +25,8 @@ button{
   cursor: pointer;
 }
 :root {
-  --gray:#f2f2f2;
+  --gray: #f2f2f2;
+  --dark-gray: #d1d0d0;
   --white: #ffffff;
   --border-gray: #ebebeb;
   --black: #212121;
