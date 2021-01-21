@@ -1,33 +1,28 @@
 import styled from 'styled-components';
 
-export const TableContainer = styled.table`
-  border-collapse: collapse;
-  margin: 25px 0;
-  min-width: 400px;
+export const Container = styled.div`
+  height: 100%;
   width: 100%;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
 
-  thead tr {
-    background-color: var(--black);
-    color: var(--white);
-    text-align: left;
-    font-family: 'Airbnb Cereal App Bold', serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .MuiButtonBase-root.MuiIconButton-root {
+    :focus {
+      outline: none;
+    }
   }
 
-  th,
-  td {
-    padding: 12px 15px;
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 2px solid var(--red);
   }
 
-  tbody tr {
-    border-bottom: 1px solid var(--gray);
+  .MuiInput-underline:before {
+    border-bottom: 1px solid var(--black);
+  }
 
-    &:nth-of-type(even) {
-      background-color: var(--white);
-    }
-    &:last-of-type {
-      border-bottom: 2px solid var(--black);
-    }
+  .MuiInput-underline:after {
+    border-bottom: 2px solid var(--red);
   }
 `;

@@ -1,115 +1,157 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
+import React, { forwardRef } from 'react';
+import MaterialTable from 'material-table';
+import {
+  AddBox,
+  ArrowDownward,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Clear,
+  DeleteOutline,
+  Edit,
+  FilterList,
+  FirstPage,
+  LastPage,
+  Remove,
+  SaveAlt,
+  Search,
+  ViewColumn,
+} from '@material-ui/icons';
 
-import { TableContainer } from './styles';
+import { Container } from './styles';
 
-type Data = {
-  headers: string[];
-  content: Array<{ userId: number; id: number; title: string; body: string }>;
+const tableIcons = {
+  Add: forwardRef<SVGSVGElement>((props, ref) => (
+    <AddBox {...props} ref={ref} />
+  )),
+  Check: forwardRef<SVGSVGElement>((props, ref) => (
+    <Check {...props} ref={ref} />
+  )),
+  Clear: forwardRef<SVGSVGElement>((props, ref) => (
+    <Clear {...props} ref={ref} />
+  )),
+  Delete: forwardRef<SVGSVGElement>((props, ref) => (
+    <DeleteOutline {...props} ref={ref} />
+  )),
+  DetailPanel: forwardRef<SVGSVGElement>((props, ref) => (
+    <ChevronRight {...props} ref={ref} />
+  )),
+  Edit: forwardRef<SVGSVGElement>((props, ref) => (
+    <Edit {...props} ref={ref} />
+  )),
+  Export: forwardRef<SVGSVGElement>((props, ref) => (
+    <SaveAlt {...props} ref={ref} />
+  )),
+  Filter: forwardRef<SVGSVGElement>((props, ref) => (
+    <FilterList {...props} ref={ref} />
+  )),
+  FirstPage: forwardRef<SVGSVGElement>((props, ref) => (
+    <FirstPage {...props} ref={ref} />
+  )),
+  LastPage: forwardRef<SVGSVGElement>((props, ref) => (
+    <LastPage {...props} ref={ref} />
+  )),
+  NextPage: forwardRef<SVGSVGElement>((props, ref) => (
+    <ChevronRight {...props} ref={ref} />
+  )),
+  PreviousPage: forwardRef<SVGSVGElement>((props, ref) => (
+    <ChevronLeft {...props} ref={ref} />
+  )),
+  ResetSearch: forwardRef<SVGSVGElement>((props, ref) => (
+    <Clear {...props} ref={ref} />
+  )),
+  Search: forwardRef<SVGSVGElement>((props, ref) => (
+    <Search {...props} ref={ref} />
+  )),
+  SortArrow: forwardRef<SVGSVGElement>((props, ref) => (
+    <ArrowDownward {...props} ref={ref} />
+  )),
+  ThirdStateCheck: forwardRef<SVGSVGElement>((props, ref) => (
+    <Remove {...props} ref={ref} />
+  )),
+  ViewColumn: forwardRef<SVGSVGElement>((props, ref) => (
+    <ViewColumn {...props} ref={ref} />
+  )),
 };
 
-type Pagination = {
-  offset: number;
-  tableData: Array<{ userId: number; id: number; title: string; body: string }>;
-  tableDataPaginated: Array<{
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  }>;
-  perPage: number;
-  currentPage: number;
-  pageCount: number;
-};
-
-type Event = {
-  selected: number;
-};
-
-const Table: React.FC<Data> = ({ headers, content }): JSX.Element => {
-  const [pagination, setPagination] = useState<Pagination>({
-    offset: 0,
-    tableDataPaginated: [],
-    perPage: 5,
-    currentPage: 0,
-    tableData: [],
-    pageCount: 0,
-  });
-
-  useEffect(() => {
-    const offset = 0;
-    const perPage = 5;
-    const tableDataPaginated = content.slice(offset, offset + perPage);
-    const pageCount = Math.ceil(content.length / perPage);
-    const tableData = content;
-
-    const basePaginationConfig = {
-      pageCount,
-      tableDataPaginated,
-      perPage,
-      offset,
-      currentPage: 0,
-      tableData,
-    };
-
-    setPagination(basePaginationConfig);
-  }, [content]);
-
-  const handlePagination = useCallback(
-    (event: Event) => {
-      const { tableData, perPage } = pagination;
-
-      const currentPage = event.selected;
-      const offset = currentPage * perPage;
-
-      const tableDataPaginated = tableData.slice(offset, offset + perPage);
-      const pageCount = Math.ceil(tableData.length / perPage);
-
-      setPagination({
-        ...pagination,
-        tableDataPaginated,
-        pageCount,
-        offset,
-        currentPage,
-      });
+const Table: React.FC = () => {
+  const columns = [
+    {
+      title: 'Nome',
+      field: 'nome',
     },
-    [pagination],
-  );
+    {
+      title: 'Email',
+      field: 'email',
+    },
+    {
+      title: 'Idade',
+      field: 'idade',
+    },
+
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+    {
+      title: 'Genero',
+      field: 'genero',
+    },
+  ];
+
+  const data = [
+    { nome: 'John', email: 'john@gmail.com', idade: 12, genero: 'Male' },
+    { nome: 'Bren', email: 'bren@gmail.com', idade: 24, genero: 'Male' },
+    { nome: 'Marry', email: 'marry@gmail.com', idade: 18, genero: 'Female' },
+    { nome: 'Shohail', email: 'shohail@gmail.com', idade: 25, genero: 'Male' },
+    { nome: 'Aseka', email: 'aseka@gmail.com', idade: 19, genero: 'Female' },
+    { nome: 'Meuko', email: 'meuko@gmail.com', idade: 12, genero: 'Female' },
+  ];
 
   return (
-    <>
-      <TableContainer>
-        <thead>
-          <tr>
-            {headers.map(header => (
-              <th key={header}>{header}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {pagination.tableDataPaginated.map(item => (
-            <tr key={item.id}>
-              <td>{item.userId}</td>
-              <td>{item.id}</td>
-              <td>{item.title}</td>
-              <td>{item.body}</td>
-            </tr>
-          ))}
-        </tbody>
-      </TableContainer>
-      <ReactPaginate
-        previousLabel="Anterior"
-        nextLabel="Próxima"
-        breakLabel="..."
-        breakClassName="break-me"
-        pageCount={pagination.pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        containerClassName="pagination"
-        activeClassName="active"
-        onPageChange={handlePagination}
+    <Container>
+      <MaterialTable
+        icons={tableIcons}
+        title="Clientes"
+        data={data}
+        columns={columns}
+        options={{
+          search: true,
+          paging: true,
+          pageSize: 5,
+          pageSizeOptions: [5],
+        }}
+        localization={{
+          toolbar: {
+            searchPlaceholder: 'Buscar cliente',
+          },
+          pagination: {
+            labelRowsSelect: 'linhas',
+            firstTooltip: 'Primeira página',
+            previousTooltip: 'Página anterior',
+            nextTooltip: 'Próxima página',
+            lastTooltip: 'Ultima página',
+            labelDisplayedRows: '{from}-{to} de {count}',
+          },
+        }}
       />
-    </>
+    </Container>
   );
 };
 

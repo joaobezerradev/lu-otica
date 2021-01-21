@@ -1,36 +1,18 @@
 import React from 'react';
-import { FiClipboard, FiFolder, FiSearch, FiUser } from 'react-icons/fi';
+import { FiClipboard, FiFolder, FiUser } from 'react-icons/fi';
 
 import logoImg from '../../assets/logo.png';
 
-import { Container, InputSearch, Navigation } from './styles';
+import { Container, Navigation, Clickable } from './styles';
 
 const Header: React.FC = () => (
   <Container>
     <img src={logoImg} alt="Logo" />
 
-    <InputSearch>
-      <FiSearch size={16} />
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Buscar cliente"
-      />
-    </InputSearch>
-
     <Navigation>
-      <div>
-        <FiUser />
-        <span>Clientes</span>
-      </div>
-      <div>
-        <FiFolder />
-        <span>Estoque</span>
-      </div>
-      <div>
-        <FiClipboard />
-        <span>Relatório</span>
-      </div>
+      <Clickable startIcon={<FiUser size={16} />}>Clientes</Clickable>
+      <Clickable startIcon={<FiFolder size={16} />}>Estoque</Clickable>
+      <Clickable startIcon={<FiClipboard size={16} />}>Relatório</Clickable>
     </Navigation>
   </Container>
 );
