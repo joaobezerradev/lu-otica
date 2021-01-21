@@ -14,7 +14,7 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: var(--white);
-  box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 15px 10px -15px rgba(229, 22, 24, 0.2);
 
   > img {
     height: 45px;
@@ -35,10 +35,6 @@ export const Clickable = styled(Button)`
 
   span {
     text-transform: none;
-
-    &:hover {
-      color: var(--red);
-    }
   }
 
   & + button {
@@ -47,5 +43,11 @@ export const Clickable = styled(Button)`
 
   :focus {
     outline: none;
+  }
+
+  &:hover {
+    span {
+      color: var(--red);
+    }
   }
 `;

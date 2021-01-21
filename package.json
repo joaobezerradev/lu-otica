@@ -74,7 +74,8 @@
   "lint-staged": {
     "./src/*.{js,jsx,ts,tsx}": [
       "yarn eslint src/**/*.ts --fix",
-      "yarn eslint src/**/*.tsx --fix"
+      "yarn eslint src/**/*.tsx --fix",
+      "git add ."
     ]
   }
 }
