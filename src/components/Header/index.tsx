@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiClipboard, FiFolder, FiUser } from 'react-icons/fi';
+import { PersonOutline, Storage, AssessmentOutlined } from '@material-ui/icons';
 
 import logoImg from '../../assets/logo.png';
 
@@ -11,9 +11,9 @@ const Header: React.FC = () => {
       <img src={logoImg} alt="Logo" />
 
       <Navigation>
-        <Clickable startIcon={<FiUser size={16} />}>Clientes</Clickable>
-        <Clickable startIcon={<FiFolder size={16} />}>Estoque</Clickable>
-        <Clickable startIcon={<FiClipboard size={16} />}>Relatório</Clickable>
+        <Clickable startIcon={<PersonOutline />}>Clientes</Clickable>
+        <Clickable startIcon={<Storage />}>Estoque</Clickable>
+        <Clickable startIcon={<AssessmentOutlined />}>Relatório</Clickable>
       </Navigation>
     </Container>
   );

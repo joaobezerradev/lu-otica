@@ -16,6 +16,7 @@ import {
   SaveAlt,
   Search,
   ViewColumn,
+  Person,
 } from '@material-ui/icons';
 
 import { Container } from './styles';
@@ -134,8 +135,9 @@ const Table: React.FC = () => {
         options={{
           search: true,
           paging: true,
-          pageSize: 5,
-          pageSizeOptions: [5],
+          pageSize: 8,
+          pageSizeOptions: [8],
+          padding: 'dense',
         }}
         localization={{
           toolbar: {
